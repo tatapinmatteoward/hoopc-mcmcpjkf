@@ -1,0 +1,293 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Basketball Players Spotlight";
+const pageDescription = "Explore in-depth profiles and analyses of basketball's elite players on Hooper Insights. Dive into stats, stories, and what makes them excel in the game.";
+
+const featuredPlayers = [
+  {
+    id: 1,
+    name: "LeBron James",
+    title: "The King",
+    stats: "25+ PPG, 7+ RPG, 7+ APG",
+    story: "The King continues to rewrite history with his all-around game. Averaging 25+ points in his 20th season, LeBron's vision and versatility set him apart.",
+    strengths: "Unmatched basketball IQ and longevity",
+    image: "lebron.jpg"
+  },
+  {
+    id: 2,
+    name: "Stephen Curry",
+    title: "The Sharpshooter",
+    stats: "40%+ Three-Pointers, 30+ PPG",
+    story: "The sharpshooter who revolutionized the three-point era. Curry's off-ball movement and 40%+ from deep make him a nightmare for defenses.",
+    strengths: "Revolutionary shooting and court vision",
+    image: "curry.jpg"
+  },
+  {
+    id: 3,
+    name: "Giannis Antetokounmpo",
+    title: "The Greek Freak",
+    stats: "27+ PPG, 13+ RPG, 5+ APG",
+    story: "A dynamic two-way player with incredible athleticism and versatility. His combination of size, speed, and skill makes him one of the most dominant players in the league.",
+    strengths: "Athleticism and defensive impact",
+    image: "giannis.jpg"
+  }
+];
+
+const playerStats = [
+  { player: "LeBron James", points: "25.9", rebounds: "7.9", assists: "7.2" },
+  { player: "Stephen Curry", points: "30.1", rebounds: "5.4", assists: "6.2" },
+  { player: "Giannis Antetokounmpo", points: "30.9", rebounds: "12.1", assists: "5.9" }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <style>
+  .player-card {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .player-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    }
+    .gradient-border {
+      position: relative;
+      border-radius: 12px;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #dc2626, #ea580c, #dc2626);
+      z-index: -1;
+      border-radius: 14px;
+    }
+    .stat-bar {
+      height: 8px;
+      border-radius: 4px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+    .stat-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+</style>
+
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-br from-red-600 via-orange-500 to-red-700 py-24">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgMGg1MDB2NTBIMHoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIwLjUiIGZpbGw9Im5vbmUiLz48L3N2Zz4=')]"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-bold mb-4">EXCLUSIVE INSIGHTS</span>
+        <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+          Basketball Players <br />
+          <span class="text-yellow-300">Spotlight</span>
+        </h1>
+        <p class="text-xl text-white/90 mb-8 max-w-2xl">
+          Explore in-depth profiles and analyses of basketball's elite players on Hooper Insights. Dive into stats, stories, and what makes them excel in the game.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button class="px-6 py-3 bg-white text-red-600 font-bold rounded-full hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+            View Full Profiles
+          </button>
+          <button class="px-6 py-3 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition duration-300">
+            Top Performers
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Players Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Players</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Discover the athletes who define basketball excellence through unique insights and detailed analysis.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {featuredPlayers.map((player) => (
+          <div class="player-card bg-white rounded-xl overflow-hidden">
+            <div class="h-48 bg-gradient-to-r from-red-500 to-orange-500 relative">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-4">
+                <h3 class="text-2xl font-black text-white">{player.name}</h3>
+                <p class="text-white/80">{player.title}</p>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="px-3 py-1 bg-red-100 text-red-700 text-sm font-bold rounded-full">{player.stats}</span>
+              </div>
+              <p class="text-gray-700 mb-4">{player.story}</p>
+              <div class="mt-4 pt-4 border-t border-gray-200">
+                <p class="font-bold text-gray-900 mb-1">Why he excels:</p>
+                <p class="text-orange-600">{player.strengths}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Player Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Player Performance Metrics</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Deep dive into statistical excellence of our featured players</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {playerStats.map((playerStat, index) => (
+          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">{playerStat.player}</h3>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium text-gray-700">Points Per Game</span>
+                  <span class="font-bold text-gray-900">{playerStat.points}</span>
+                </div>
+                <div class="stat-bar">
+                  <div class="stat-fill bg-gradient-to-r from-red-500 to-orange-500" style={`width: ${parseInt(playerStat.points) * 3}%`}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium text-gray-700">Rebounds Per Game</span>
+                  <span class="font-bold text-gray-900">{playerStat.rebounds}</span>
+                </div>
+                <div class="stat-bar">
+                  <div class="stat-fill bg-gradient-to-r from-red-500 to-orange-500" style={`width: ${parseInt(playerStat.rebounds) * 4}%`}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium text-gray-700">Assists Per Game</span>
+                  <span class="font-bold text-gray-900">{playerStat.assists}</span>
+                </div>
+                <div class="stat-bar">
+                  <div class="stat-fill bg-gradient-to-r from-red-500 to-orange-500" style={`width: ${parseInt(playerStat.assists) * 10}%`}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Player Analysis Section -->
+  <section class="py-16 bg-gradient-to-br from-red-50 to-orange-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+        <div class="md:w-1/2">
+          <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-red-600">
+            <div class="flex items-center mb-6">
+              <i class="fas fa-chart-line text-3xl text-red-600 mr-4"></i>
+              <h2 class="text-2xl font-bold text-gray-900">Performance Analysis</h2>
+            </div>
+            <p class="text-gray-700 mb-6">
+              Every player profile comes with comprehensive analysis of their statistical performance trends, game impact metrics, and career trajectory assessments. 
+              We break down numbers that matter most to identify what makes each athlete exceptional on the court.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span class="text-gray-700">Season-by-season performance tracking</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span class="text-gray-700">Injury impact assessment</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span class="text-gray-700">Playmaking efficiency metrics</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                <span class="text-gray-700">Clutch performance evaluation</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2">
+          <div class="relative">
+            <div class="absolute -top-6 -left-6 w-full h-full bg-gradient-to-r from-red-600 to-orange-500 rounded-2xl z-0"></div>
+            <div class="relative z-10 bg-white p-8 rounded-2xl shadow-xl">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">What Sets Them Apart</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4 mt-1">
+                    <i class="fas fa-bolt text-red-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">Basketball IQ</h4>
+                    <p class="text-gray-600">Intelligence in decision-making and court awareness</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4 mt-1">
+                    <i class="fas fa-futbol text-red-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">Versatility</h4>
+                    <p class="text-gray-600">Ability to perform across multiple positions and roles</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4 mt-1">
+                    <i class="fas fa-clock text-red-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900">Durability</h4>
+                    <p class="text-gray-600">Consistent performance over long seasons and playoffs</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-red-700 to-orange-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Elevate Your Game?</h2>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto mb-10">
+        Join thousands of fans who trust Hooper Insights for authentic basketball intelligence and analysis
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="px-8 py-4 bg-white text-red-700 font-bold rounded-full hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+          Subscribe to Premium
+        </button>
+        <button class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition duration-300">
+          Explore All Players
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Latest Basketball News";
+const pageDescription = "Dive into the freshest updates, trades, and insights shaping the basketball world at Hooper Insights.";
+
+const newsItems = [
+  {
+    id: 1,
+    title: "Breaking: Lakers Eye Major Trade for All-Star Forward",
+    summary: "In a move that's sending shockwaves through the league, the Los Angeles Lakers are reportedly in advanced talks to acquire Phoenix Suns forward Kevin Durant.",
+    details: [
+      "Potential Impact: Durant's scoring prowess could propel the Lakers back to championship contention.",
+      "Trade Rumors Timeline: Discussions heated up after the Suns' recent slump.",
+      "Expert Take: \"This would be a game-changer,\" says analyst Jamal Carter."
+    ],
+    category: "Trade",
+    date: "2023-06-15"
+  },
+  {
+    id: 2,
+    title: "Rising Star Eclipses Expectations in Debut Season",
+    summary: "The young phenom has been lighting up the court with unprecedented performances that have analysts buzzing about his future potential.",
+    details: [
+      "Statistical Breakdown: Averaging 24.5 points per game in his rookie season.",
+      "Impact on Team: His presence has transformed the team's offensive strategy.",
+      "Future Outlook: Predicted to be a cornerstone player for the next decade."
+    ],
+    category: "Player Spotlight",
+    date: "2023-06-14"
+  },
+  {
+    id: 3,
+    title: "New Arena Set to Open in Downtown District",
+    summary: "The city's newest basketball venue promises to revolutionize fan experiences with cutting-edge technology and premium amenities.",
+    details: [
+      "Construction Timeline: Opening scheduled for fall 2024.",
+      "Architecture Highlights: Sustainable design featuring solar panels and smart glass.",
+      "Community Impact: Expected to boost local economy by $300 million annually."
+    ],
+    category: "League",
+    date: "2023-06-13"
+  }
+];
+
+const categories = ["All", "Trade", "Player Spotlight", "League"];
+let selectedCategory = "All";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-r from-red-600 to-orange-500 py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-64 h-64 bg-white rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+      <div class="absolute top-40 right-20 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-20 left-1/2 w-60 h-60 bg-white rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1 bg-white text-red-600 font-bold rounded-full mb-4">LATEST NEWS</span>
+        <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">Latest Basketball News</h1>
+        <p class="text-xl text-white/90 mb-8">Dive into the freshest updates, trades, and insights shaping the basketball world at Hooper Insights.</p>
+        <div class="flex items-center text-white/80">
+          <i class="fas fa-calendar-alt mr-2"></i>
+          <span>Updated daily | Stay ahead of the game</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="bg-white py-6 border-b">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap gap-2 justify-center">
+        {categories.map((category) => (
+          <button 
+            class={`px-5 py-2 rounded-full font-bold transition-all duration-300 ${
+              selectedCategory === category 
+                ? 'bg-red-600 text-white shadow-lg' 
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+            onClick={() => selectedCategory = category}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- News Grid -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {newsItems.filter(item => selectedCategory === "All" || item.category === selectedCategory).map((item) => (
+        <article class="bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-100">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <span class="inline-block px-3 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm">
+                {item.category}
+              </span>
+              <span class="text-gray-500 text-sm flex items-center">
+                <i class="fas fa-clock mr-1"></i> {item.date}
+              </span>
+            </div>
+            
+            <h2 class="text-xl font-black text-gray-900 mb-3 line-clamp-2">{item.title}</h2>
+            <p class="text-gray-600 mb-4">{item.summary}</p>
+            
+            <div class="space-y-3 mb-6">
+              {item.details.map((detail, index) => (
+                <div class="flex">
+                  <i class="fas fa-chevron-right text-red-500 mt-1 mr-2 flex-shrink-0"></i>
+                  <p class="text-gray-700 text-sm">{detail}</p>
+                </div>
+              ))}
+            </div>
+            
+            <button class="flex items-center text-red-600 font-bold group">
+              Read Full Story
+              <i class="fas fa-arrow-right ml-2 group-hover:ml-3 transition-all duration-300"></i>
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-gradient-to-r from-gray-50 to-gray-100">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-black text-gray-900 mb-4">Basketball Insights at a Glance</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Our comprehensive analysis reveals key trends and statistics driving the modern basketball landscape</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-300 hover:scale-105">
+          <div class="text-5xl font-black text-red-600 mb-4">89%</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">of Fans Follow Live Updates</h3>
+          <p class="text-gray-600">According to our latest survey of basketball enthusiasts</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-300 hover:scale-105">
+          <div class="text-5xl font-black text-orange-500 mb-4">2.4M</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Daily Active Readers</h3>
+          <p class="text-gray-600">Engaging with our expert analysis and breaking news</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-300 hover:scale-105">
+          <div class="text-5xl font-black text-red-600 mb-4">98%</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Accuracy Rate</h3>
+          <p class="text-gray-600">Our predictions and insider information reliability</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-red-700 to-orange-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-6">Join the Basketball Conversation</h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Get exclusive access to insider knowledge and early-breaking news before anyone else</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="px-8 py-4 bg-white text-red-600 font-bold rounded-full hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
+          Subscribe Now
+        </button>
+        <button class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-colors duration-300">
+          Explore Archives
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .animate-blob {
+      animation: blob 15s infinite;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    @keyframes blob {
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</Layout>

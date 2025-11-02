@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Basketball Videos: Elevate Your Game with Expert Tips & Drills | Hoop Central";
+const pageDescription = "Dive into our collection of high-energy basketball videos featuring pro-level drills, game analysis, and skill-building tips. From urban courts to tech-savvy training, elevate your hoop game today!";
+
+const featuredPlaylists = [
+  {
+    id: 1,
+    title: "Dribbling Drills for Urban Warriors",
+    description: "Master street-ball handles with quick, agile moves. From crossovers to hesitation steps, these 5-10 minute sessions build confidence and control.",
+    duration: "5-10 min",
+    thumbnail: "dribbling"
+  },
+  {
+    id: 2,
+    title: "Street Ball Fundamentals",
+    description: "Learn the core moves that separate weekend warriors from elite players. Advanced footwork and court sense from the city streets.",
+    duration: "10-15 min",
+    thumbnail: "street-ball"
+  },
+  {
+    id: 3,
+    title: "Game-Changing Shooting Techniques",
+    description: "Pro shooting forms and mental approach. Watch how top players develop consistency under pressure.",
+    duration: "8-12 min",
+    thumbnail: "shooting"
+  },
+  {
+    id: 4,
+    title: "Hustle & Defense Moves",
+    description: "Defensive positioning, stealing balls, and aggressive court awareness. These skills turn good players great.",
+    duration: "6-10 min",
+    thumbnail: "defense"
+  }
+];
+
+const testimonials = [
+  {
+    quote: "These videos transformed my game overnight. The street ball techniques are unmatched!",
+    author: "Marcus Johnson",
+    role: "High School All-Star"
+  },
+  {
+    quote: "The progression from beginner to advanced feels natural and achievable. Highly recommend!",
+    author: "Sarah Martinez",
+    role: "College Recruiting"
+  },
+  {
+    quote: "Finally found training content that matches my urban basketball background. Pure gold!",
+    author: "James Chen",
+    role: "Street League Champion"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <style>
+  {'
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      .neon-glow {
+        box-shadow: 0 0 10px #10b981, 0 0 20px #10b981;
+      }
+      
+      .neon-border {
+        border: 2px solid #10b981;
+      }
+      
+      .fade-in {
+        animation: fadeIn 0.8s ease-out;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .gradient-text {
+        background: linear-gradient(to right, #10b981, #0ea5e9, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .pulse-animation {
+        animation: pulse 2s infinite;
+      }
+      
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+    '}
+</style>
+
+  {/* Hero Section */}
+  <div class="relative bg-gradient-to-br from-black via-gray-900 to-gray-800 py-24 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900/70 via-black/50 to-black"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white fade-in">
+          <span class="gradient-text">Basketball Videos</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 fade-in" style="animation-delay: 0.3s">
+          Elevate Your Game with Expert Tips & Drills
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12 fade-in" style="animation-delay: 0.6s">
+          <button class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 pulse-animation">
+            Start Learning Now
+          </button>
+          <button class="bg-transparent border-2 border-emerald-500 text-emerald-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-emerald-500 hover:text-white transition-all duration-300">
+            Watch Demo
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mt-16">
+          <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg border border-gray-700">
+            <div class="text-3xl font-bold text-emerald-400">150+</div>
+            <div class="text-gray-400 text-sm">Training Videos</div>
+          </div>
+          <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg border border-gray-700">
+            <div class="text-3xl font-bold text-emerald-400">50k+</div>
+            <div class="text-gray-400 text-sm">Active Players</div>
+          </div>
+          <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg border border-gray-700">
+            <div class="text-3xl font-bold text-emerald-400">24/7</div>
+            <div class="text-gray-400 text-sm">Access</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Welcome Section */}
+  <div class="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
+          Welcome to the <span class="gradient-text">Hoop Central Videos Hub</span>
+        </h2>
+        
+        <div class="bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 mb-12">
+          <p class="text-xl text-gray-200 leading-relaxed">
+            Where the pulse of the game meets cutting-edge training. Our bold, neon-lit collection is designed for aspiring ballers ready to level up. 
+            Whether you're a weekend warrior or grinding for the next big tryout, these dynamic videos deliver pro insights with urban flair and tech-infused precision.
+          </p>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+          <div class="flex items-center gap-2 bg-gray-800/50 px-6 py-3 rounded-full border border-gray-700">
+            <i class="fas fa-basketball-ball text-emerald-400"></i>
+            <span class="text-white font-medium">Pro-Level Drills</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800/50 px-6 py-3 rounded-full border border-gray-700">
+            <i class="fas fa-microchip text-emerald-400"></i>
+            <span class="text-white font-medium">Tech-Savvy Training</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800/50 px-6 py-3 rounded-full border border-gray-700">
+            <i class="fas fa-city text-emerald-400"></i>
+            <span class="text-white font-medium">Urban Court Focus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Featured Playlists */}
+  <div class="py-20 bg-black">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          Featured Video <span class="gradient-text">Playlists</span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          Explore curated playlists that break down every aspect of basketball mastery. Fast-paced edits, vibrant neon overlays, and smooth transitions keep you hooked.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {featuredPlaylists.map((playlist) => (
+          <div 
+            key={playlist.id} 
+            class="group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-emerald-500 transition-all duration-500 transform hover:-translate-y-2 floating"
+          >
+            <div class="h-48 bg-gradient-to-r from-emerald-900/30 to-teal-900/30 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="text-3xl font-bold text-white mb-2">{playlist.duration}</div>
+                <div class="text-emerald-400 font-medium">{playlist.thumbnail}</div>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors duration-300">
+                {playlist.title}
+              </h3>
+              <p class="text-gray-400 mb-4 leading-relaxed">
+                {playlist.description}
+              </p>
+              <button class="w-full bg-gray-700 hover:bg-emerald-600 text-white py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center gap-2">
+                <i class="fas fa-play"></i> Watch Playlist
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* Testimonials */}
+  <div class="py-20 bg-gradient-to-b from-black to-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          What Our <span class="gradient-text">Players Say</span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          Hear from the ballers who've transformed their game with our expert training videos
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <div 
+            key={index} 
+            class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-emerald-500 transition-all duration-500"
+          >
+            <div class="text-emerald-400 text-4xl mb-4">❝</div>
+            <p class="text-gray-200 text-lg mb-6 italic leading-relaxed">
+              "{testimonial.quote}"
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center mr-4">
+                <span class="font-bold text-white">
+                  {testimonial.author.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+              <div>
+                <div class="text-white font-bold">{testimonial.author}</div>
+                <div class="text-emerald-400 text-sm">{testimonial.role}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* CTA Section */}
+  <div class="py-24 bg-gradient-to-r from-black via-gray-900 to-black">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Ready to <span class="gradient-text">Elevate Your Game?</span>
+        </h2>
+        <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          Join thousands of players who've already transformed their game with our expert training videos. 
+          Start building your skills today.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-10 py-5 rounded-full font-bold text-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105">
+            Get Free Access Now
+          </button>
+          <button class="bg-transparent border-2 border-emerald-500 text-emerald-500 px-10 py-5 rounded-full font-bold text-lg hover:bg-emerald-500 hover:text-white transition-all duration-300">
+            View All Videos
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

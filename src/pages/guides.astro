@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Basketball Guides: Master Every Skill on the Court";
+const pageDescription = "Dive into Hoop Central's comprehensive basketball guides. From beginner drills to advanced strategies, elevate your game with expert tips, videos, and techniques designed for players of all levels.";
+
+const features = [
+  { 
+    icon: 'fas fa-bullseye', 
+    title: 'Tailored for All Levels', 
+    text: 'Beginner-friendly basics to elite training regimens.' 
+  },
+  { 
+    icon: 'fas fa-video', 
+    title: 'Visual & Interactive', 
+    text: 'High-energy videos with slow-mo breakdowns and AR overlays.' 
+  },
+  { 
+    icon: 'fas fa-chalkboard-teacher', 
+    title: 'Proven Techniques', 
+    text: 'Backed by NBA coaches and streetball legends.' 
+  },
+  { 
+    icon: 'fas fa-city', 
+    title: 'Urban Edge', 
+    text: 'Infuse your game with that city-court vibe.' 
+  }
+];
+
+const categories = [
+  {
+    title: 'Shooting Mastery',
+    description: 'Perfect your shot with precision and power',
+    color: 'from-cyan-500 to-blue-500'
+  },
+  {
+    title: 'Dribbling Domination',
+    description: 'Master the art of ball control',
+    color: 'from-purple-500 to-pink-500'
+  },
+  {
+    title: 'Defensive Tactics',
+    description: 'Learn to shut down opponents',
+    color: 'from-green-500 to-emerald-500'
+  },
+  {
+    title: 'Offensive Plays',
+    description: 'Execute game-changing sequences',
+    color: 'from-yellow-500 to-orange-500'
+  },
+  {
+    title: 'Conditioning & Fitness',
+    description: 'Stay ahead with peak physical readiness',
+    color: 'from-red-500 to-rose-500'
+  },
+  {
+    title: 'Mental Game',
+    description: 'Develop championship mentality',
+    color: 'from-indigo-500 to-violet-500'
+  }
+];
+
+const testimonials = [
+  {
+    quote: "These guides transformed my game. The visualization techniques are unparalleled.",
+    author: "Marcus Johnson",
+    role: "College Star"
+  },
+  {
+    quote: "Finally a resource that combines street wisdom with technical excellence.",
+    author: "Sarah Chen",
+    role: "Pro League Coach"
+  },
+  {
+    quote: "The progression system helped me go from recreational player to serious contender.",
+    author: "David Rodriguez",
+    role: "Streetball Legend"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <style>
+  {'
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+      
+      .animate-pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      
+      .neon-glow {
+        box-shadow: 0 0 10px #10b981, 0 0 20px #10b981;
+      }
+      
+      .neon-text {
+        text-shadow: 0 0 5px #10b981, 0 0 10px #10b981;
+      }
+    '}
+</style>
+
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-r from-black via-gray-900 to-black overflow-hidden">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%2310b981" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <div class="container mx-auto px-4 py-24 md:py-32 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          Basket<span class="text-emerald-400">ball</span> Guides
+        </h1>
+        <div class="flex items-center mb-8">
+          <div class="w-16 h-1 bg-emerald-400 mr-4"></div>
+          <h2 class="text-xl md:text-2xl font-semibold text-gray-300 neon-text">
+            Master Every Skill on the Court
+          </h2>
+        </div>
+        <p class="text-gray-400 text-lg mb-10 max-w-2xl">
+          Dive into Hoop Central's comprehensive basketball guides. From beginner drills to advanced strategies, elevate your game with expert tips, videos, and techniques designed for players of all levels.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 neon-glow">
+            Explore Guides
+          </button>
+          <button class="px-8 py-3 bg-transparent border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-black font-bold rounded-lg transition-all duration-300">
+            Watch Demo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-gradient-to-b from-gray-900 to-black">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Why Choose Our Guides?
+        </h2>
+        <div class="w-24 h-1 bg-emerald-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {features.map((feature, index) => (
+          <div 
+            key={index} 
+            class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-emerald-500 transition-all duration-300 group"
+          >
+            <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 transition-colors">
+              <i class={`${feature.icon} text-emerald-400 text-xl`}></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">{feature.title}</h3>
+            <p class="text-gray-400">{feature.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="py-16 bg-black">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Featured Guide Categories
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Explore our curated collection of basketball expertise designed to accelerate your skill development
+        </p>
+        <div class="w-24 h-1 bg-emerald-500 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {categories.map((category, index) => (
+          <div 
+            key={index} 
+            class={`group relative overflow-hidden rounded-xl h-64 bg-gradient-to-br ${category.color} transition-all duration-500 hover:scale-105`}
+          >
+            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="relative z-10 h-full flex flex-col justify-end p-6">
+              <h3 class="text-2xl font-bold text-white mb-2">{category.title}</h3>
+              <p class="text-white/80 mb-4">{category.description}</p>
+              <button class="self-start px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg backdrop-blur-sm transition-colors">
+                Explore
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-gradient-to-b from-black to-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          What Pro Players Say
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Join the ranks of elite players who've transformed their game with our guides
+        </p>
+        <div class="w-24 h-1 bg-emerald-500 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <div 
+            key={index} 
+            class="bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl border border-gray-700 hover:border-emerald-500 transition-all duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mr-4">
+                <i class="fas fa-quote-left text-emerald-400"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white">{testimonial.author}</h4>
+                <p class="text-emerald-400 text-sm">{testimonial.role}</p>
+              </div>
+            </div>
+            <p class="text-gray-300 italic">"{testimonial.quote}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 bg-gradient-to-r from-emerald-900/20 to-black">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+        Ready to Elevate Your Game?
+      </h2>
+      <p class="text-gray-300 text-xl max-w-2xl mx-auto mb-10">
+        Join thousands of players transforming their performance with our expert guides
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 neon-glow">
+          Start Learning Today
+        </button>
+        <button class="px-8 py-4 bg-transparent border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-black font-bold rounded-lg transition-all duration-300">
+          View Full Library
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <footer class="py-16 bg-black border-t border-gray-800">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-2xl font-bold text-white mb-4">
+        Elevate Your Game: Expert Basketball Guides, Videos & Tips
+      </h3>
+      <p class="text-gray-400 max-w-2xl mx-auto">
+        Join the revolution in basketball education. Whether you're a beginner or aspiring pro, Hoop Central gives you everything needed to dominate the court.
+      </p>
+    </div>
+  </footer>
+</Layout>

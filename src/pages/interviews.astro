@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Interviews - Court Chronicles";
+const pageDescription = "Step into the minds of basketball icons through our exclusive interviews. From legendary players to visionary coaches, discover the untold stories that fuel the game's enduring spirit.";
+
+const interviews = [
+  {
+    id: 1,
+    title: "Michael Jordan: The Last Dance Revisited",
+    excerpt: "The GOAT reflects on his iconic career, the pressure of legacy, and lessons for today's stars.",
+    quote: "Basketball isn't just a game; it's a mirror to your soul.",
+    author: "Michael Jordan"
+  },
+  {
+    id: 2,
+    title: "Sue Bird: Breaking Barriers on and off the Court",
+    excerpt: "The WNBA legend discusses her journey to becoming one of the most influential players in women's basketball history.",
+    quote: "Success isn't just about winning, it's about how you handle losing.",
+    author: "Sue Bird"
+  },
+  {
+    id: 3,
+    title: "Coach K: Wisdom from a Hall of Fame Mind",
+    excerpt: "The legendary Duke coach shares insights on leadership, discipline, and building champions.",
+    quote: "Basketball is a team sport, but it starts with individual character.",
+    author: "Mike Krzyzewski"
+  },
+  {
+    id: 4,
+    title: "LeBron James: Beyond the Numbers",
+    excerpt: "TheKing opens up about his evolution as a player, leader, and business mogul beyond basketball.",
+    quote: "I don't want to be known as just a basketball player.",
+    author: "LeBron James"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <style>
+  {'
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:wght@400;500;600&display=swap');
+      
+      .vintage-serif {
+        font-family: 'EB Garamond', serif;
+      }
+      
+      .vintage-display {
+        font-family: 'Playfair Display', serif;
+      }
+      
+      .letterpress {
+        position: relative;
+        padding: 1rem;
+        border: 1px solid rgba(30, 41, 59, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 14px rgba(0, 0, 0, 0.05);
+      }
+      
+      .letterpress::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(30, 41, 59, 0.05) 2px,
+          rgba(30, 41, 59, 0.05) 4px
+        );
+        pointer-events: none;
+      }
+      
+      .ornament {
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem;
+      }
+      
+      .ornament::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background-color: #fbbf24;
+      }
+      
+      .interview-card:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+      }
+      
+      .quote-mark {
+        font-size: 3rem;
+        line-height: 1;
+        margin-bottom: -0.5rem;
+        opacity: 0.3;
+        display: block;
+      }
+      
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    '}
+</style>
+
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-br from-slate-900 to-slate-800 py-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzYjgyZjYiLz48cGF0aCBkPSJNMCAwTDIwIDIwTDAgNDBMMjAgNjBMMzAgNTBMMjAgNzBMMzAgOTBMMzAgNzBMMzAgNTBMMzAgMTBMMjAgMjBMMzAgMzBMMjAgNDBMMzAgNTBMMjAgNjBMMzAgNzBMMjAgODBMMzAgOTBMMzAgODBMMzAgNzBMMzAgNjBMMzAgNTBMMzAgNDBMMzAgMzBMMzAgMjBMMzAgMTBMMzAgMTBMMzAgMjBMMzAgMzBMMzAgNDBMMzAgNTBMMzAgNjBMMzAgNzBMMzAgODBMMzAgOTBMMzAgODBMMzAgNzBMMzAgNjBMMzAgNTBMMzAgNDBMMzAgMzBMMzAgMjBMMzAgMTBMMzAgMTBMMzAgMjBMMzAgMzBMMzAgNDBMMzAgNTBMMzAgNjBMMzAgNzBMMzAgODBMMzAgOTBMMzAgODBMMzAgNzBMMzAgNjBMMzAgNTBMMzAgNDBMMzAgMzBMMzAgMjBMMzAgMTBMMzAgMTBMMzAgMjBMMzAgMzBMMzAgNDBMMzAgNTBMMzAgNjBMMzAgNzBMMzAgODBMMzAgOTBMMzAgODBMMzAgNzBMMzAgNjBMMzAgNTBMMzAgNDBMMzAgMzBMMzAgMjBMMzAgMTBMMzAgMTBMMzAgMjBMMzAgMzBMMzAgNDBMMzAgNTBMMzAgNjBMMzAgNzBMMzAgODBMMzAgOTBMMzAgODBMMzAgNzBMMzAgNjBMMzAgNTBMMzAgNDBMMzAgMzBMMzAgMjBMMzAgMTBMMzAgMTBMMzAgMjBMMzAgMzBMMzAgNDBMMzAgNTBMMzAgNjBMMzAgNzBMMzAgODBMMzAgOTBMMzAgODBMMzAgNzBMMzAgNjBMMzAgNTBMMzAgNDBMMzAgMzBMMzAgMjBMMzAgMTBMMzAgMTBMMzAgMjBMMzAgMzBMMzAgNDBMMzAgNTBMMzAgNjBMMzAgNzBMMzAgODBMMzAgOTBMMzAgODBMMzAgNzBMMzAgNjBMMzAg......')]"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="vintage-display text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+          Interviews
+        </h1>
+        
+        <div class="ornament text-2xl md:text-3xl text-amber-400 font-light mb-8">
+          Chronicling the Heart and Soul of Basketball
+        </div>
+        
+        <p class="vintage-serif text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
+          Welcome to the <span class="font-semibold">Interviews</span> section of <em>Court Chronicles</em>, 
+          where the echoes of hardwood floors give way to the raw voices of the game's guardians.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Introduction Section -->
+  <div class="py-16 bg-gradient-to-b from-slate-50 to-slate-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="letterpress bg-white rounded-lg p-8 shadow-sm">
+          <p class="vintage-serif text-lg text-slate-800 leading-relaxed mb-6">
+            In the spirit of vintage storytelling, we sit down with the titans and trailblazers of basketball—legends whose dribbles shaped eras and newcomers whose dreams light the future. 
+            These aren't just Q&amp;As; they're intimate tales from the court, woven with passion, grit, and unfiltered wisdom.
+          </p>
+          
+          <div class="flex justify-center mt-8">
+            <div class="w-24 h-1 bg-amber-400"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Interviews Section -->
+  <div class="py-16 bg-gradient-to-b from-slate-100 to-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="vintage-display text-4xl font-bold text-slate-800 mb-4">Featured Conversations</h2>
+        <div class="w-24 h-1 bg-amber-400 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {interviews.map((interview, index) => (
+          <article key={interview.id} class="interview-card letterpress bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-in" style={`animation-delay: ${index * 100}ms`}>
+            <div class="p-8">
+              <h3 class="vintage-display text-2xl font-bold text-slate-800 mb-4">{interview.title}</h3>
+              <p class="vintage-serif text-slate-600 mb-6 leading-relaxed">{interview.excerpt}</p>
+              
+              <div class="relative">
+                <span class="quote-mark">“</span>
+                <blockquote class="vintage-serif text-slate-700 italic pl-8 mb-4">
+                  {interview.quote}
+                </blockquote>
+                <footer class="vintage-serif text-amber-600 font-medium">— {interview.author}</footer>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote Section -->
+  <div class="py-20 bg-gradient-to-r from-slate-800 to-slate-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <blockquote class="vintage-serif text-2xl md:text-3xl text-white italic mb-8">
+          "Basketball is more than a game—it's a reflection of human potential, resilience, and the relentless pursuit of greatness."
+        </blockquote>
+        <cite class="vintage-serif text-xl text-amber-300 font-medium">— Court Chronicles Editorial Team</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter CTA -->
+  <div class="py-16 bg-gradient-to-br from-amber-50 to-amber-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h3 class="vintage-display text-3xl font-bold text-slate-800 mb-6">Stay Connected to the Stories</h3>
+        <p class="vintage-serif text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+          Join our exclusive mailing list and never miss an interview with basketball legends.
+        </p>
+        
+        <form class="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            class="flex-grow px-6 py-4 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent vintage-serif"
+          />
+          <button 
+            type="submit" 
+            class="px-8 py-4 bg-slate-800 text-white font-medium rounded-lg hover:bg-slate-700 transition-colors vintage-serif whitespace-nowrap"
+          >
+            Subscribe Now
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</Layout>

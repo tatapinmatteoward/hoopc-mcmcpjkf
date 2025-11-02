@@ -1,0 +1,268 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Basketball Tutorials";
+const pageDescription = "Dive into our comprehensive basketball tutorials designed to elevate your skills. From beginner drills to advanced techniques, find expert guides, videos, and tips to dominate the court at Hoop Central.";
+
+const features = [
+  { 
+    icon: 'fas fa-user-friends', 
+    title: 'Expert-Led Content', 
+    text: 'Insights from NBA coaches, streetball legends, and sports scientists.' 
+  },
+  { 
+    icon: 'fas fa-laptop-code', 
+    title: 'Tech-Infused Learning', 
+    text: 'Interactive videos with slow-motion analysis and AR overlays for precise technique.' 
+  },
+  { 
+    icon: 'fas fa-city', 
+    title: 'Urban Vibe', 
+    text: 'Tutorials inspired by city courts, blending raw energy with professional polish.' 
+  },
+  { 
+    icon: 'fas fa-chart-line', 
+    title: 'Progressive Structure', 
+    text: 'Build from fundamentals to elite techniques step by step.' 
+  }
+];
+
+const tutorialCategories = [
+  { 
+    title: 'Beginner Basics', 
+    description: 'Master fundamental skills like dribbling and shooting',
+    color: 'from-blue-500 to-cyan-400'
+  },
+  { 
+    title: 'Advanced Techniques', 
+    description: 'Elevate your game with elite moves and strategies',
+    color: 'from-purple-500 to-pink-500'
+  },
+  { 
+    title: 'Streetball Mastery', 
+    description: 'Dominate the court with urban basketball skills',
+    color: 'from-green-500 to-emerald-400'
+  },
+  { 
+    title: 'Training Programs', 
+    description: 'Structured workouts to improve performance',
+    color: 'from-yellow-500 to-orange-500'
+  }
+];
+
+const testimonials = [
+  { 
+    quote: 'These tutorials completely transformed my game. The slow-motion analysis helped me fix my form instantly.',
+    author: 'Marcus Johnson',
+    role: 'Streetball Pro'
+  },
+  { 
+    quote: 'As a coach, I recommend these to every player. The technical breakdown is unmatched.',
+    author: 'Sarah Williams',
+    role: 'NBA Assistant Coach'
+  },
+  { 
+    quote: 'Finally, tutorials that understand the urban basketball culture. Everything feels relevant and practical.',
+    author: 'Alex Rodriguez',
+    role: 'League Champion'
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <style>
+  {'
+      @keyframes pulse-glow {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+      }
+      
+      .glow-pulse {
+        animation: pulse-glow 2s infinite;
+      }
+      
+      .neon-text {
+        text-shadow: 0 0 5px #10b981, 0 0 10px #10b981, 0 0 15px #10b981;
+      }
+      
+      .gradient-border {
+        position: relative;
+        border-radius: 12px;
+      }
+      
+      .gradient-border::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #10b981, #000000, #10b981);
+        z-index: -1;
+        border-radius: 14px;
+        animation: gradient 3s ease infinite;
+        background-size: 400% 400%;
+      }
+      
+      @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .tutorial-card:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
+      
+      .category-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .category-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+    '}
+</style>
+
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-400/10 via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="relative container mx-auto px-4 py-24 md:py-32">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1 mb-4 text-sm font-bold tracking-wider text-emerald-400 bg-emerald-900/30 rounded-full glow-pulse">
+          NEW TUTORIAL SERIES
+        </span>
+        
+        <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+          Basketball <span class="text-emerald-400 neon-text">Tutorials</span>: Elevate Your Game
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl">
+          Dive into our comprehensive basketball tutorials designed to elevate your skills. From beginner drills to advanced techniques, find expert guides, videos, and tips to dominate the court at Hoop Central.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 glow-pulse">
+            Start Learning
+          </button>
+          <button class="px-8 py-4 bg-transparent border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 font-bold rounded-lg transition-all duration-300">
+            View Categories
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Choose Section -->
+  <div class="py-20 bg-gradient-to-b from-black to-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">
+          Why Choose <span class="text-emerald-400">Hoop Central</span> Tutorials?
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Our bold approach combines technical precision with urban streetball culture for unparalleled learning experiences
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {features.map((feature, index) => (
+          <div key={index} class="group bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800 hover:border-emerald-500/30 transition-all duration-300">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors duration-300">
+              <i class={`${feature.icon} text-2xl text-emerald-400`}></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">{feature.title}</h3>
+            <p class="text-gray-400">{feature.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Tutorial Categories -->
+  <div class="py-20 bg-black">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">
+          <span class="text-emerald-400">Skill Categories</span> to Master
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Progress from basics to elite techniques with our structured learning paths
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {tutorialCategories.map((category, index) => (
+          <div key={index} class={`category-card bg-gradient-to-br ${category.color} p-1 rounded-xl`}>
+            <div class="bg-black rounded-xl p-6 h-full">
+              <h3 class="text-xl font-bold text-white mb-3">{category.title}</h3>
+              <p class="text-gray-300 mb-6">{category.description}</p>
+              <button class="w-full py-3 bg-black/50 hover:bg-black/80 text-white font-semibold rounded-lg border border-emerald-500/30 transition-colors duration-300">
+                Explore Series
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">
+          What Players Are <span class="text-emerald-400">Saying</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Real results from real players who transformed their game with our tutorials
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <div key={index} class="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800 hover:border-emerald-500/30 transition-all duration-300">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mr-4">
+                <i class="fas fa-quote-left text-emerald-400 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white">{testimonial.author}</h4>
+                <p class="text-sm text-emerald-400">{testimonial.role}</p>
+              </div>
+            </div>
+            <p class="text-gray-300 italic">"{testimonial.quote}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="py-20 bg-gradient-to-r from-black via-gray-900 to-black">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-6">
+          Ready to <span class="text-emerald-400 neon-text">Dominate</span> the Court?
+        </h2>
+        <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          Join thousands of players who have elevated their game with Hoop Central's expert tutorials
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 glow-pulse">
+            Access Full Library
+          </button>
+          <button class="px-8 py-4 bg-transparent border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 font-bold rounded-lg transition-all duration-300">
+            Free Trial
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

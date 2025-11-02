@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Hooper Insights Analysis: Unlocking Basketball Mastery";
+const pageDescription = "Dive deep into the strategies, stats, and stories shaping elite basketball. From player breakdowns to tactical evolutions, our analysis equips you with insights to elevate your game and fandom.";
+
+const featuredBreakdowns = [
+  {
+    id: 1,
+    title: "Rise of the Versatile Big: Nikola Jokić's Playmaking Revolution",
+    excerpt: "How the Nuggets' star redefined the center role, with stats showing a 25% increase in assist rates for bigs league-wide.",
+    tag: "Player Analysis"
+  },
+  {
+    id: 2,
+    title: "Defensive Schemes in the Modern Era",
+    excerpt: "Breaking down zone vs. man-to-man efficiencies, illustrated through advanced metrics and real-game examples.",
+    tag: "Tactical Deep Dive"
+  },
+  {
+    id: 3,
+    title: "The Evolution of Three-Point Shooting",
+    excerpt: "Examining how teams are adapting their offenses around perimeter shooting and its impact on court spacing.",
+    tag: "Statistical Insight"
+  }
+];
+
+const testimonials = [
+  {
+    quote: "Hooper Insights transformed how I understand the game. The data visualization makes complex trends accessible.",
+    author: "Marcus Thompson",
+    role: "College Head Coach"
+  },
+  {
+    quote: "As a die-hard fan, I appreciate the balance between analytics and storytelling. It's like having a former NBA player analyze the game with me.",
+    author: "Sarah Martinez",
+    role: "Basketball Enthusiast"
+  },
+  {
+    quote: "The tactical breakdowns helped me improve my own gameplay. Now I know why certain plays are called at specific moments.",
+    author: "James Williams",
+    role: "Amateur Player"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <style>
+  {'
+      .gradient-bg {
+        background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+      }
+      
+      .card-hover {
+        transition: all 0.3s ease;
+        transform: translateY(0);
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      
+      .tag-badge {
+        background: rgba(220, 38, 38, 0.1);
+        color: #dc2626;
+      }
+      
+      .hero-gradient {
+        background: linear-gradient(rgba(220, 38, 38, 0.9), rgba(234, 88, 12, 0.9)), url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .section-title {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: #ea580c;
+        border-radius: 2px;
+      }
+      
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+        background: linear-gradient(to right, #dc2626, #ea580c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    '}
+</style>
+
+  <!-- Hero Section -->
+  <div class="hero-gradient py-24 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1 bg-white bg-opacity-20 rounded-full text-white mb-4 text-sm font-medium">
+          Deep Dives into Basketball Excellence
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+          Hooper Insights Analysis
+        </h1>
+        <p class="text-xl text-white text-opacity-90 mb-8 max-w-2xl">
+          Dive deep into the strategies, stats, and stories shaping elite basketball. From player breakdowns to tactical evolutions, our analysis equips you with insights to elevate your game and fandom.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button class="bg-white text-red-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+            Explore Latest Analysis
+          </button>
+          <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-red-700 font-bold py-3 px-8 rounded-lg transition duration-300">
+            View Player Profiles
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Breakdowns -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Breakdowns</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Explore our latest analyses that capture the pulse of the court
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredBreakdowns.map((breakdown) => (
+          <div class="card-hover bg-white rounded-xl overflow-hidden shadow-lg">
+            <div class="h-48 gradient-bg relative">
+              <span class="absolute top-4 right-4 px-3 py-1 tag-badge text-xs font-semibold rounded-full">
+                {breakdown.tag}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">{breakdown.title}</h3>
+              <p class="text-gray-600 mb-4">{breakdown.excerpt}</p>
+              <button class="text-red-600 font-semibold hover:text-red-800 flex items-center">
+                Read Full Analysis
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats & Impact -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <div class="stat-number">50K+</div>
+          <p class="text-gray-700 text-xl mt-2">Active Readers Monthly</p>
+        </div>
+        <div class="md:w-1/2 md:pl-12">
+          <h3 class="text-3xl font-bold text-gray-900 mb-4">Transforming Understanding of the Game</h3>
+          <p class="text-gray-600 mb-6">
+            Our analytical approach combines statistical precision with narrative storytelling to reveal the deeper truths behind basketball success. We've helped thousands of readers gain new perspectives on their favorite sport.
+          </p>
+          <div class="flex items-center">
+            <div class="flex -space-x-2">
+              <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" />
+              <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" />
+              <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/22.jpg" alt="User" />
+              <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" />
+            </div>
+            <span class="ml-4 text-gray-600">Join our community of basketball enthusiasts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Readers Say</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Hear from coaches, players, and fans who've elevated their understanding
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <div class="bg-white p-8 rounded-xl shadow-md">
+            <div class="flex items-center mb-6">
+              <div class="text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <svg class="w-5 h-5 inline" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            <p class="text-gray-700 italic mb-6">"{testimonial.quote}"</p>
+            <div>
+              <h4 class="font-bold text-gray-900">{testimonial.author}</h4>
+              <p class="text-gray-600 text-sm">{testimonial.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 gradient-bg">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Elevate Your Game?</h2>
+      <p class="text-white text-opacity-90 max-w-2xl mx-auto mb-10 text-lg">
+        Join thousands who have transformed their basketball knowledge with our expert analysis
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="bg-white text-red-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300">
+          Subscribe to Premium Analysis
+        </button>
+        <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-red-700 font-bold py-3 px-8 rounded-lg transition duration-300">
+          Explore Free Content
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,45 @@
+---
+const currentYear = new Date().getFullYear();
+const socialLinks = [
+  { icon: 'fab fa-twitter', url: '#' },
+  { icon: 'fab fa-instagram', url: '#' },
+  { icon: 'fab fa-youtube', url: '#' },
+  { icon: 'fab fa-tiktok', url: '#' }
+];
+---
+
+<footer class="bg-black text-white py-12 relative overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black via-emerald-500/10 to-black"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-6 md:mb-0">
+        <h2 class="text-2xl font-bold tracking-wider text-emerald-400">HOOP CENTRAL</h2>
+        <p class="mt-2 text-gray-400">Urban Basketball Culture</p>
+      </div>
+      
+      <div class="flex space-x-6">
+        {socialLinks.map((link) => (
+          <a 
+            href={link.url} 
+            class="text-gray-300 hover:text-emerald-400 transition-all duration-300 transform hover:scale-110"
+            aria-label={`Follow us on ${link.icon.replace('fab fa-', '')}`}
+          >
+            <i class={`${link.icon} text-2xl`}></i>
+          </a>
+        ))}
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+      <p class="text-gray-500 text-sm">
+        &copy; {currentYear} Hoop Central. All rights reserved.
+      </p>
+      <p class="text-gray-600 text-xs mt-2">
+        Powered by Neon Tech • Urban Sports Experience
+      </p>
+    </div>
+  </div>
+</footer>
